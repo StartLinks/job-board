@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Roles — AI Startup Job Board</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-in">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">we are hiring</a></li>
+      </ul>
+      <button class="btn-p" id="applyBtn">投递岗位</button>
+    </nav>
+  </header>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&#x2715;</button>
+      <img src="images/apply-poster.jpg" alt="投递方式">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats" id="stats"></div>
+    <div class="filters">
+      <button class="chip on" data-f="all">全部</button>
+      <button class="chip" data-f="engineering">工程</button>
+      <button class="chip" data-f="design">设计</button>
+      <button class="chip" data-f="product">产品</button>
+      <button class="chip" data-f="operations">运营</button>
+      <div class="filter-div"></div>
+      <button class="chip-t on" data-t="all">全部类型</button>
+      <button class="chip-t" data-t="全职">全职</button>
+      <button class="chip-t" data-t="实习">实习</button>
+      <div class="s-wrap">
+        <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="搜索职位、公司、城市..." id="q">
+      </div>
+    </div>
+    <div class="tbl">
+      <div class="th"><span>Team</span><span>Position</span><span>Type</span><span>Location</span></div>
+      <div id="rows"></div>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>&copy; 2026 Open Roles</span>
+    <div style="display:flex;gap:20px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script>
+  const LOGOS={
+    'Chatcut':'logos/chatcut.png',
+    'Cherry Studio':'logos/cherry-studio.png',
+    'Evomap':'logos/evomap.png',
+    'Floatboat':'logos/floatboat.png',
+    'Humanify':'logos/humanify.png',
+    'InsForge':'logos/insforge.png',
+    'Kuku':'logos/kuku.png',
+    'SP1':'logos/sp1.svg',
+    'Skyris':'logos/skyris.png',
+    'Tripo':'logos/tripo.png',
+    '万物时':'logos/wanwushi.png'
+  };
+
+  const companies=new Set(JOBS.map(j=>j.team));
+  document.getElementById('stats').innerHTML=`<span><strong>${JOBS.length}</strong> 个职位</span><span><strong>${companies.size}</strong> 家公司</span>`;
+
+  function logoHtml(j){
+    const src=LOGOS[j.team];
+    if(src) return `<img src="${src}" style="width:100%;height:100%;object-fit:contain;display:block;border-radius:10px" onerror="this.style.display='none'">`;
+    return j.ic;
+  }
+
+  function renderList(f,t,q){
+    const $=document.getElementById('rows');
+    const list=JOBS.filter(j=>{
+      const fd=f==='all'||j.dept===f;
+      const ft=t==='all'||j.type===t;
+      const fq=!q||j.pos.toLowerCase().includes(q)||j.team.toLowerCase().includes(q)||j.loc.toLowerCase().includes(q);
+      return fd&&ft&&fq;
+    });
+    $.innerHTML=list.map((j,i)=>{
+      const hasLogo=!!LOGOS[j.team];
+      const bgStyle=hasLogo?'background:transparent':`background:${j.c}`;
+      return `<a class="jr" href="jobs/${j.id}.html" style="animation-delay:${i*.02}s">
+        <div class="ct"><div class="ti" style="${bgStyle}">${logoHtml(j)}</div><span class="tl">${j.team}${j.website?extSvg:''}</span></div>
+        <div><div class="pt">${j.pos}</div></div>
+        <div><span class="type-tag ${j.type}">${j.type}</span></div>
+        <div class="cp">${j.loc}</div>
+      </a>`;
+    }).join('');
+  }
+
+  let cf='all', ct='all';
+  renderList(cf,ct,'');
+
+  document.querySelectorAll('.chip').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+      b.classList.add('on');
+      cf=b.dataset.f;
+      renderList(cf,ct,document.getElementById('q').value.toLowerCase());
+    });
+  });
+
+  document.querySelectorAll('.chip-t').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.chip-t').forEach(c=>c.classList.remove('on'));
+      b.classList.add('on');
+      ct=b.dataset.t;
+      renderList(cf,ct,document.getElementById('q').value.toLowerCase());
+    });
+  });
+
+  document.getElementById('q').addEventListener('input',e=>renderList(cf,ct,e.target.value.toLowerCase()));
+
+  // Modal
+  const overlay=document.getElementById('modalOverlay');
+  document.getElementById('applyBtn').addEventListener('click',()=>overlay.classList.add('open'));
+  document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
+  overlay.addEventListener('click',e=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') overlay.classList.remove('open'); });
+  </script>
+</body>
+</html>
