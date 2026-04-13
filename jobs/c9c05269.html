@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交付/运营PM实习生（项目执行方向） — SP1 | Open Roles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-in">
+      <ul class="nav-links">
+        <li><a href="../index.html" class="active">we are hiring</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&#x2715;</button>
+      <img src="../images/apply-poster.jpg" alt="投递方式">
+    </div>
+  </div>
+
+  <div class="detail-wrap">
+    <a href="../index.html" class="bk">&larr; 返回职位列表</a>
+
+    <div class="dt-top">
+      <div>
+        <div class="dt-co">
+          <div class="dt-ci" style="background:transparent"><img src="../logos/sp1.svg" style="width:100%;height:100%;object-fit:contain;display:block;border-radius:12px" onerror="this.style.display='none'"></div>
+          <span class="dt-cn">SP1 </span>
+        </div>
+        <h1 class="dt-t">交付/运营PM实习生（项目执行方向）</h1>
+      </div>
+      <button class="btn-a" id="applyBtn">投递岗位</button>
+    </div>
+
+    <div class="tags"><span class="tag">实习</span><span class="tag">北京</span></div>
+
+    <div>
+      <div class="mr"><div class="ml">Posted by</div><div class="mv"><div class="avs"><div class="av" style="background:#c6a086">LD</div></div></div></div>
+      <div class="mr"><div class="ml">Location</div><div class="mv"><strong>北京</strong></div></div>
+
+    </div>
+
+    <div class="ds">
+      <div class="ml" style="margin-bottom:16px">Description</div>
+      <div class="db"><h3>工作职责</h3><ul><li>协助项目负责人推进项目落地，跟进时间节点与执行进度</li><li>对接设计、内容、展位、海外资源等外包方，整理需求与反馈</li><li>把零散信息整理成清晰的项目状态与下一步动作</li></ul>
+<h3>任职要求</h3><ul><li>做事靠谱、细心，对时间节点敏感</li><li>能同时处理多件事</li><li>对项目型工作有兴趣，愿意承担责任</li></ul></div>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>&copy; 2026 Open Roles</span>
+    <div style="display:flex;gap:20px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </footer>
+  <script>
+    const overlay=document.getElementById('modalOverlay');
+    document.getElementById('applyBtn').addEventListener('click',()=>overlay.classList.add('open'));
+    document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
+    overlay.addEventListener('click',e=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') overlay.classList.remove('open'); });
+  </script>
+</body>
+</html>

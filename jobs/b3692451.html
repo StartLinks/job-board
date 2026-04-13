@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端工程师 — Cherry Studio | Open Roles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-in">
+      <ul class="nav-links">
+        <li><a href="../index.html" class="active">we are hiring</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&#x2715;</button>
+      <img src="../images/apply-poster.jpg" alt="投递方式">
+    </div>
+  </div>
+
+  <div class="detail-wrap">
+    <a href="../index.html" class="bk">&larr; 返回职位列表</a>
+
+    <div class="dt-top">
+      <div>
+        <div class="dt-co">
+          <div class="dt-ci" style="background:transparent"><img src="../logos/cherry-studio.png" style="width:100%;height:100%;object-fit:contain;display:block;border-radius:12px" onerror="this.style.display='none'"></div>
+          <span class="dt-cn">Cherry Studio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;color:#b0b0b0"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </div>
+        <h1 class="dt-t">前端工程师</h1>
+      </div>
+      <button class="btn-a" id="applyBtn">投递岗位</button>
+    </div>
+
+    <div class="tags"><span class="tag">全职</span><span class="tag">上海</span></div>
+
+    <div>
+      <div class="mr"><div class="ml">Posted by</div><div class="mv"><div class="avs"><div class="av" style="background:#7eb8da">JK</div></div></div></div>
+      <div class="mr"><div class="ml">Location</div><div class="mv"><strong>上海</strong></div></div>
+      <div class="mr"><div class="ml">Website</div><div class="mv"><a href="https://cherrystudiochina.com" target="_blank" style="color:#3185fc;font-size:.85rem">https://cherrystudiochina.com</a></div></div>
+    </div>
+
+    <div class="ds">
+      <div class="ml" style="margin-bottom:16px">Description</div>
+      <div class="db"><h3>任职要求</h3><ul><li>深入理解和实践React、TypeScript、Node.js</li><li>熟练运用TailwindCSS、shadcn/ui等现代工具库</li></ul></div>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>&copy; 2026 Open Roles</span>
+    <div style="display:flex;gap:20px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </footer>
+  <script>
+    const overlay=document.getElementById('modalOverlay');
+    document.getElementById('applyBtn').addEventListener('click',()=>overlay.classList.add('open'));
+    document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
+    overlay.addEventListener('click',e=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') overlay.classList.remove('open'); });
+  </script>
+</body>
+</html>

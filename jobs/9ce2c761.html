@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全栈AI视觉设计师 — Evomap | Open Roles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <nav class="nav-in">
+      <ul class="nav-links">
+        <li><a href="../index.html" class="active">we are hiring</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&#x2715;</button>
+      <img src="../images/apply-poster.jpg" alt="投递方式">
+    </div>
+  </div>
+
+  <div class="detail-wrap">
+    <a href="../index.html" class="bk">&larr; 返回职位列表</a>
+
+    <div class="dt-top">
+      <div>
+        <div class="dt-co">
+          <div class="dt-ci" style="background:transparent"><img src="../logos/evomap.png" style="width:100%;height:100%;object-fit:contain;display:block;border-radius:12px" onerror="this.style.display='none'"></div>
+          <span class="dt-cn">Evomap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;color:#b0b0b0"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </div>
+        <h1 class="dt-t">全栈AI视觉设计师</h1>
+      </div>
+      <button class="btn-a" id="applyBtn">投递岗位</button>
+    </div>
+
+    <div class="tags"><span class="tag">全职</span><span class="tag">实习</span><span class="tag">深圳</span></div>
+
+    <div>
+      <div class="mr"><div class="ml">Posted by</div><div class="mv"><div class="avs"><div class="av" style="background:#d4b896">SC</div></div></div></div>
+      <div class="mr"><div class="ml">Location</div><div class="mv"><strong>深圳</strong></div></div>
+      <div class="mr"><div class="ml">Website</div><div class="mv"><a href="https://evomap.ai" target="_blank" style="color:#3185fc;font-size:.85rem">https://evomap.ai</a></div></div>
+    </div>
+
+    <div class="ds">
+      <div class="ml" style="margin-bottom:16px">Description</div>
+      <div class="db"><h3>工作职责</h3><ul><li>AI驱动的高品质视觉创意设计（营销海报、品牌视觉、UI/UX、社媒配图等）</li><li>训练和维护符合品牌规范的专属LoRA模型</li><li>搭建「传统设计+AIGC」高效工作流，扩充AI设计资产库</li><li>将AI设计方法论沉淀为教程或Agent能力，赋能团队</li></ul>
+<h3>任职要求</h3><ul><li>本科及以上，美术/视觉传达/设计类相关专业，2年以上商业视觉设计经验</li><li>精通Photoshop、Illustrator、Figma等传统设计工具</li><li>熟练使用Midjourney/Nano banana，熟悉ComfyUI/WebUI及ControlNet、LoRA等精准控图技术</li><li>对即梦、可灵、Runway、Sora等AI视频生成工具有实操经验</li></ul>
+<h3>加分项</h3><ul><li>有C4D/Blender/Houdini或AE/PR动效能力</li><li>具备手绘插画、摄影或艺术创作背景</li></ul></div>
+    </div>
+  </div>
+
+  <footer class="ft">
+    <span>&copy; 2026 Open Roles</span>
+    <div style="display:flex;gap:20px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </footer>
+  <script>
+    const overlay=document.getElementById('modalOverlay');
+    document.getElementById('applyBtn').addEventListener('click',()=>overlay.classList.add('open'));
+    document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
+    overlay.addEventListener('click',e=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') overlay.classList.remove('open'); });
+  </script>
+</body>
+</html>
